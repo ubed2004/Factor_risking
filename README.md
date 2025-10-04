@@ -152,7 +152,7 @@ Type: File
 
 Value: Select your survey image file.
 ```
-Example curl command:
+**Example curl command:**
 ```
 curl -X POST -F "surveyImage=@ocr_processing/sample_image.png" http://localhost:3000/analyze
 ```
@@ -177,7 +177,7 @@ Body: raw (JSON)
   "sleep": "I usually get about 6 hours of sleep"
 }
 ```
-Example curl command:
+**Example curl command:**
 ```
 curl -X POST -H "Content-Type: application/json" -d '{"age": 58, "smoker": false, "exercise": "I walk daily"}' http://localhost:3000/analyze
 ```
