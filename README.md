@@ -1,12 +1,12 @@
-AI-Powered Health Risk Profiler
+🤖 AI-Powered Health Risk Profiler
 ====================================
-1.Overview
+📜1.Overview
 --------------------------
 This project is a sophisticated backend service designed to analyze lifestyle survey responses and generate a comprehensive health risk profile. It leverages a powerful pipeline that accepts either image-based surveys (via OCR) or direct JSON text/object input, processes the data through Google's Gemini AI for multi-step analysis, and returns a structured JSON report.
 
 The core functionalities include data extraction from images, a data quality guardrail, risk factor identification, risk classification with a numerical score, and the generation of personalized, actionable recommendations. The entire service is exposed as a REST API built with Node.js and Express, making it easy to integrate with any frontend application or testing tool.
 
-2.Project Architecture & Flow
+🏗️2.Project Architecture & Flow
  -----------------------------------
 The application is built on a modular architecture that separates concerns for clarity and maintainability. The following diagrams illustrate the project's data flow and code structure.
 
@@ -45,7 +45,16 @@ graph TD
 
     style A fill:#cce5ff,stroke:#004085,stroke-width:2px,color:#000,font-size:14px
     style B fill:#e6dcf0,stroke:#59397f,stroke-width:2px,color:#000,font-size:14px
-    
+     style C fill:#fff3cd,stroke:#856404,stroke-width:2px,color:#000,font-size:14px
+     style D fill:#fff3cd,stroke:#856404,stroke-width:2px,color:#000,font-size:14px
+     style E fill:#fff3cd,stroke:#856404,stroke-width:2px,color:#000,font-size:14px
+     style F fill:#fff3cd,stroke:#856404,stroke-width:2px,color:#000,font-size:14px
+    style H fill:#f8d7da,stroke:#721c24,stroke-width:2px,color:#000,font-size:14px
+    style I fill:#f8d7da,stroke:#721c24,stroke-width:2px,color:#000,font-size:14px
+    style G fill:#d4edda,stroke:#155724,stroke-width:2px,color:#000,font-size:14px
+    style J fill:#d4edda,stroke:#155724,stroke-width:2px,color:#000,font-size:14px
+
+
 
 
 ```
@@ -80,7 +89,7 @@ graph LR
     style D fill:#f8d7da,stroke:#721c24,stroke-width:2px,color:#000
 
 ```
-3.Setup and Installation
+🚀3.Setup and Installation
 ----------------------------------------
 Prerequisites
 Node.js (v16+ recommended)
@@ -111,7 +120,7 @@ Add the key to your .env file:
 ```
 GOOGLE_API_KEY=AIzaSy...your_personal_api_key_here
 ```
-4.How to Run the Application
+🏃4.How to Run the Application
 ------------
 To start the API server, run the following command from the project's root directory:
 ```
@@ -121,7 +130,7 @@ The server will start and listen for requests on
 ```
 http://localhost:3000.
 ```
- 5.API Reference
+ 📚5.API Reference
 ------------------
 This section provides a detailed reference for using the API.
 
@@ -172,7 +181,7 @@ Example curl command:
 ```
 curl -X POST -H "Content-Type: application/json" -d '{"age": 58, "smoker": false, "exercise": "I walk daily"}' http://localhost:3000/analyze
 ```
-Success Response (200 OK)
+✅Success Response ( ``` 200 OK ```)
 ----------------------
 A successful analysis returns a JSON object with the full report.
 ```
@@ -210,7 +219,7 @@ Example Body:
     }
 }
 ```
-Error Response (400 Bad Request)
+❌Error Response ( ```400 Bad Request ```)
 ------------------
 If more than 3 fields are missing or empty in the input, the server will respond with an error.
 ```
@@ -227,7 +236,7 @@ Example Body:
 }
 
 ```
-6.AI Prompt
+🧠6.AI Prompt
 ------------------
 The core of the analysis is controlled by the system prompts sent to the Google Gemini API.
 
@@ -246,7 +255,7 @@ Used to generate the final report and advice.
 ```
 "You are an expert health analyst. Your task is to analyze a user's survey responses. Based on the data, you must determine an overall risk_level, list the key factors, provide a simple recommendation for each factor, and set a status field to 'ok'. Your response MUST be a single, valid JSON object with the keys risk_level, factors, recommendations, and status."
 ```
-7.Project Structure (File Tree)
+📁7.Project Structure (File Tree)
 -----------------   
  ```
 /Factor_risking/
