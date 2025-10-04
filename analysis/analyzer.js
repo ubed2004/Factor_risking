@@ -1,5 +1,5 @@
 
-const { getRiskFactors, riskClassification, getRecommendations } = require('../clients/geminiClient.js');
+const { getRiskFactors, riskClassification, getRecommendations } = require('../clients/geminiClientApi.js');
 
 /**
  * Analyzes survey data by using the Gemini client to extract risk factors.
