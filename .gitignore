@@ -3,3 +3,4 @@
 node_modules
 pipeline.js
 main.js
+ocr_extraction.js
