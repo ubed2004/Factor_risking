@@ -110,20 +110,10 @@ app.post('/analyze', upload.single('surveyImage'), async (req, res) => {
     }
 });
 
-// Start the server
+
 app.listen(port, () => {
     console.log(`✅ Health profiler server is running at http://localhost:${port}`);
     console.log('To test, send a POST request with a file upload to http://localhost:3000/analyze');
 });
-// ```
 
-// ### Next Steps
-
-// 1.  **Install Express & Multer:** Open your terminal in the `Factor_risking` folder and run:
-//     ```bash
-//     npm install express multer
-//     ```
-// 2.  **Run the Server:** Start your web server with the command:
-//     ```bash
-//     node server.js
     
