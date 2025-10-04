@@ -10,7 +10,7 @@ dotenv.config();
 
 
 const app = express();
-const port = 3000;
+const PORT =process.env.PORT|| 3000;
 
 // --- Multer Configuration for File Uploads ---
 // This sets up a temporary storage location for uploaded images.
@@ -111,8 +111,8 @@ app.post('/analyze', upload.single('surveyImage'), async (req, res) => {
 });
 
 
-app.listen(port, () => {
-    console.log(`✅ Health profiler server is running at http://localhost:${port}`);
+app.listen(PORT, () => {
+    console.log(`✅ Health profiler server is running at http://localhost:${PORT}`);
     console.log('To test, send a POST request with a file upload to http://localhost:3000/analyze');
 });
 
