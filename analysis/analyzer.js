@@ -1,5 +1,5 @@
 
-const { getRiskFactors, riskClassification, getRecommendations } = require('../clients/geminiClientApi.js');
+const { getAllRiskFactors, riskClassification, getAllRecommendations } = require('../clients/geminiClientApi.js');
 
 /**
  * Analyzes survey data by using the Gemini client to extract risk factors.
@@ -8,7 +8,7 @@ const { getRiskFactors, riskClassification, getRecommendations } = require('../c
  */
 async function extractFactorsWithAi(surveyData) {
     // The complex logic (prompt, schema, API call) is handled by the client.
-    return getRiskFactors(surveyData);
+    return getAllRiskFactors(surveyData);
 }
 
 /**
@@ -17,7 +17,7 @@ async function extractFactorsWithAi(surveyData) {
  * @returns {Promise<object>} - An object mapping factors to recommendations.
  */
 async function getRecommendationsWithAi(riskFactors) {
-    return getRecommendations(riskFactors);
+    return getAllRecommendations(riskFactors);
 }
 
 async function riskClassificationwithAi(riskFactors){

@@ -5,7 +5,7 @@ const API_KEY = process.env.GOOGLE_API_KEY;
 const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${API_KEY}`;
 
 
-async function _callGeminiApi(systemPrompt, userInput, jsonSchema) {
+async function GeminiApi(systemPrompt, userInput, jsonSchema) {
 
     if (!API_KEY) {
         console.error("ERROR: GOOGLE_API_KEY not found. Please check your .env file.");
@@ -57,7 +57,7 @@ async function _callGeminiApi(systemPrompt, userInput, jsonSchema) {
 /**
  * Calls the AI to get a comprehensive summary of every factor.
  */
-async function getRiskFactors(surveyData) {
+async function getAllRiskFactors(surveyData) {
     console.log("--- [AI Client] Preparing to get lifestyle summary... ---");
 
     // --- PROMPT ---
@@ -70,7 +70,7 @@ async function getRiskFactors(surveyData) {
     };
     const userInputText = Object.entries(surveyData).map(([key, value]) => `${key}: ${value}`).join('\n');
 
-    const responseJson = await _callGeminiApi(systemPrompt, userInputText, jsonSchema);
+    const responseJson = await GeminiApi(systemPrompt, userInputText, jsonSchema);
     
     if (responseJson) {
         console.log("--- [AI Client] Successfully received factors! ---");
@@ -81,7 +81,7 @@ async function getRiskFactors(surveyData) {
 }
 
 
-async function getRecommendations(riskFactors) {
+async function getAllRecommendations(riskFactors) {
     console.log("\n--- [AI Client] Preparing to get recommendations... ---");
  const systemPrompt = "You are an expert health analyst. Your task is to analyze a user's survey responses. Based on the data, you must: " +
         "1. Determine an overall `risk_level` (categorized as 'low', 'medium', or 'high'). " +
@@ -103,7 +103,7 @@ async function getRecommendations(riskFactors) {
     
         const userInputText = `Please generate a report for the following lifestyle factors: ${riskFactors.join(', ')}`;
     
-    const responseJson = await _callGeminiApi(systemPrompt, userInputText, jsonSchema);
+    const responseJson = await GeminiApi(systemPrompt, userInputText, jsonSchema);
 
     if (responseJson) {
         console.log("--- [AI Client] Successfully received comprehensive report! ---");
@@ -138,7 +138,7 @@ async function riskClassification(riskFactors) {
 
     const userInputText = `Please generate a report for the following lifestyle factors: ${riskFactors.join(', ')}`;
 
-    const responseJson = await _callGeminiApi(systemPrompt, userInputText, jsonSchema);
+    const responseJson = await GeminiApi(systemPrompt, userInputText, jsonSchema);
 
     if (responseJson) {
         console.log("--- [AI Client] Successfully received risk classification! ---");
@@ -150,6 +150,6 @@ async function riskClassification(riskFactors) {
 }
 
 
-module.exports = { getRiskFactors,riskClassification, getRecommendations };
+module.exports = { getAllRiskFactors,riskClassification, getAllRecommendations };
 
     
